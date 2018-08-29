@@ -7,21 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D3F81E45539F16A25DE48E6 /* Pods_eUsluge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBCB321E4AF6020DB82770BC /* Pods_eUsluge.framework */; };
 		CE583DBC20AACC680040E717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE583DBB20AACC680040E717 /* AppDelegate.swift */; };
-		CE583DBE20AACC680040E717 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE583DBD20AACC680040E717 /* ViewController.swift */; };
+		CE583DBE20AACC680040E717 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE583DBD20AACC680040E717 /* ServiceViewController.swift */; };
 		CE583DC120AACC680040E717 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE583DBF20AACC680040E717 /* Main.storyboard */; };
 		CE583DC320AACC690040E717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE583DC220AACC690040E717 /* Assets.xcassets */; };
 		CE583DC620AACC690040E717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE583DC420AACC690040E717 /* LaunchScreen.storyboard */; };
+		CE974F6320BAF6EA0042446A /* ServiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6220BAF6EA0042446A /* ServiceTableViewController.swift */; };
+		CE974F6520BAFA740042446A /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6420BAFA740042446A /* RatingControl.swift */; };
+		CE974F6720BB18F30042446A /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */; };
+		CE974F6920BB19F70042446A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6820BB19F70042446A /* Service.swift */; };
+		CEBC5BD820BEAA4E0039DA86 /* ChooseServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61A43AE2AB9FF82F7669E857 /* Pods-eUsluge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eUsluge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eUsluge/Pods-eUsluge.debug.xcconfig"; sourceTree = "<group>"; };
+		9A57F34A4D512E9A59B4A443 /* Pods-eUsluge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eUsluge.release.xcconfig"; path = "Pods/Target Support Files/Pods-eUsluge/Pods-eUsluge.release.xcconfig"; sourceTree = "<group>"; };
 		CE583DB820AACC680040E717 /* eUsluge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eUsluge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE583DBB20AACC680040E717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE583DBD20AACC680040E717 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE583DBD20AACC680040E717 /* ServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
 		CE583DC020AACC680040E717 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE583DC220AACC690040E717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE583DC520AACC690040E717 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE583DC720AACC690040E717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE974F6220BAF6EA0042446A /* ServiceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewController.swift; sourceTree = "<group>"; };
+		CE974F6420BAFA740042446A /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
+		CE974F6820BB19F70042446A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseServiceViewController.swift; sourceTree = "<group>"; };
+		FBCB321E4AF6020DB82770BC /* Pods_eUsluge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eUsluge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +43,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D3F81E45539F16A25DE48E6 /* Pods_eUsluge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C86782D42DC3E325624D6669 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				61A43AE2AB9FF82F7669E857 /* Pods-eUsluge.debug.xcconfig */,
+				9A57F34A4D512E9A59B4A443 /* Pods-eUsluge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE583DAF20AACC680040E717 = {
 			isa = PBXGroup;
 			children = (
 				CE583DBA20AACC680040E717 /* eUsluge */,
 				CE583DB920AACC680040E717 /* Products */,
+				C86782D42DC3E325624D6669 /* Pods */,
+				FCC62F6E80750CD2673EA2C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +81,26 @@
 			isa = PBXGroup;
 			children = (
 				CE583DBB20AACC680040E717 /* AppDelegate.swift */,
-				CE583DBD20AACC680040E717 /* ViewController.swift */,
+				CE583DBD20AACC680040E717 /* ServiceViewController.swift */,
+				CE974F6220BAF6EA0042446A /* ServiceTableViewController.swift */,
+				CE974F6820BB19F70042446A /* Service.swift */,
+				CE974F6420BAFA740042446A /* RatingControl.swift */,
+				CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */,
+				CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */,
 				CE583DBF20AACC680040E717 /* Main.storyboard */,
 				CE583DC220AACC690040E717 /* Assets.xcassets */,
 				CE583DC420AACC690040E717 /* LaunchScreen.storyboard */,
 				CE583DC720AACC690040E717 /* Info.plist */,
 			);
 			path = eUsluge;
+			sourceTree = "<group>";
+		};
+		FCC62F6E80750CD2673EA2C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FBCB321E4AF6020DB82770BC /* Pods_eUsluge.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE583DCA20AACC690040E717 /* Build configuration list for PBXNativeTarget "eUsluge" */;
 			buildPhases = (
+				460BA96A0A596531CA7A41B6 /* [CP] Check Pods Manifest.lock */,
 				CE583DB420AACC680040E717 /* Sources */,
 				CE583DB520AACC680040E717 /* Frameworks */,
 				CE583DB620AACC680040E717 /* Resources */,
+				944E2F4BD6D575DE27FF89A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +171,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		460BA96A0A596531CA7A41B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-eUsluge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		944E2F4BD6D575DE27FF89A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-eUsluge/Pods-eUsluge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eUsluge/Pods-eUsluge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE583DB420AACC680040E717 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE583DBE20AACC680040E717 /* ViewController.swift in Sources */,
+				CE974F6520BAFA740042446A /* RatingControl.swift in Sources */,
+				CE974F6320BAF6EA0042446A /* ServiceTableViewController.swift in Sources */,
+				CE974F6720BB18F30042446A /* ServiceTableViewCell.swift in Sources */,
+				CE583DBE20AACC680040E717 /* ServiceViewController.swift in Sources */,
+				CEBC5BD820BEAA4E0039DA86 /* ChooseServiceViewController.swift in Sources */,
 				CE583DBC20AACC680040E717 /* AppDelegate.swift in Sources */,
+				CE974F6920BB19F70042446A /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +363,7 @@
 		};
 		CE583DCB20AACC690040E717 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61A43AE2AB9FF82F7669E857 /* Pods-eUsluge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -295,6 +381,7 @@
 		};
 		CE583DCC20AACC690040E717 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A57F34A4D512E9A59B4A443 /* Pods-eUsluge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
