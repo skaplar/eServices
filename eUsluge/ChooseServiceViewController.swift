@@ -15,7 +15,11 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var searchTextField: SearchTextField!
     
     let services = ["Cleaning", "Washing", "Dashing"]
-    var choosenCity: String? = ""
+    static let cities = [City(name: "Novi Sad", shortName: "NS", code: "21000"), City(name: "Beograd", shortName: "BG", code: "11000")]
+    
+   
+    var filterableCities = [SearchTextFieldItem]()
+    var city: City?
     
     
     
@@ -23,7 +27,19 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
         super.viewDidLoad()
         
         searchTextField.delegate = self
-        searchTextField.filterStrings(["Novi Sad", "Beograd"])
+        //searchTextField.filterStrings(["Novi Sad", "Beograd"])
+        loadCities()
+    }
+    
+    // Here the cities are loaded, currently hardcoded
+    // And added to the filterable collection
+    func loadCities() {
+        for city in ChooseServiceViewController.cities {
+            let item = SearchTextFieldItem(title: (city?.name)!, subtitle: city?.shortName)
+            filterableCities.append(item)
+        }
+        
+        searchTextField.filterItems(filterableCities)
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +71,7 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         super.prepare(for: segue, sender: sender)
+        super.prepare(for: segue, sender: sender)
         
         guard let serviceTableViewController = segue.destination as? UINavigationController else {
             fatalError("Unexpected destination \(segue.destination)")
@@ -63,7 +79,7 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
         
         let target = serviceTableViewController.topViewController as? ServiceTableViewController
         
-        target?.choosenCity = choosenCity
+        target?.choosenCity = city
     }
  
     
@@ -75,9 +91,14 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
         return true
     }
     
+    // Set the city to pass to another controller
+    // TODO: Force the system to return
     func textFieldDidEndEditing(_ textField: UITextField) {
-        choosenCity = textField.text
-        print("Odabrani grad je " + choosenCity!)
+        for tmpCity in ChooseServiceViewController.cities {
+            if tmpCity?.name == searchTextField.text {
+                self.city = tmpCity
+            }
+        }
     }
     
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D3F81E45539F16A25DE48E6 /* Pods_eUsluge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBCB321E4AF6020DB82770BC /* Pods_eUsluge.framework */; };
 		CE25175021369CC600E424E0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE25174F21369CC600E424E0 /* LoginViewController.swift */; };
+		CE2517522139635A00E424E0 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2517512139635A00E424E0 /* City.swift */; };
 		CE583DBC20AACC680040E717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE583DBB20AACC680040E717 /* AppDelegate.swift */; };
 		CE583DBE20AACC680040E717 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE583DBD20AACC680040E717 /* ServiceViewController.swift */; };
 		CE583DC120AACC680040E717 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE583DBF20AACC680040E717 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		61A43AE2AB9FF82F7669E857 /* Pods-eUsluge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eUsluge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eUsluge/Pods-eUsluge.debug.xcconfig"; sourceTree = "<group>"; };
 		9A57F34A4D512E9A59B4A443 /* Pods-eUsluge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eUsluge.release.xcconfig"; path = "Pods/Target Support Files/Pods-eUsluge/Pods-eUsluge.release.xcconfig"; sourceTree = "<group>"; };
 		CE25174F21369CC600E424E0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CE2517512139635A00E424E0 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		CE583DB820AACC680040E717 /* eUsluge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eUsluge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE583DBB20AACC680040E717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE583DBD20AACC680040E717 /* ServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */,
 				CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */,
 				CE25174F21369CC600E424E0 /* LoginViewController.swift */,
+				CE2517512139635A00E424E0 /* City.swift */,
 				CE583DBF20AACC680040E717 /* Main.storyboard */,
 				CE583DC220AACC690040E717 /* Assets.xcassets */,
 				CE583DC420AACC690040E717 /* LaunchScreen.storyboard */,
@@ -220,6 +223,7 @@
 			files = (
 				CE974F6520BAFA740042446A /* RatingControl.swift in Sources */,
 				CE974F6320BAF6EA0042446A /* ServiceTableViewController.swift in Sources */,
+				CE2517522139635A00E424E0 /* City.swift in Sources */,
 				CE974F6720BB18F30042446A /* ServiceTableViewCell.swift in Sources */,
 				CE583DBE20AACC680040E717 /* ServiceViewController.swift in Sources */,
 				CE25175021369CC600E424E0 /* LoginViewController.swift in Sources */,

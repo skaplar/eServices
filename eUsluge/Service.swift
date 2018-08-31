@@ -15,13 +15,14 @@ class Service {
     var title: String
     var photo: UIImage?
     var rating: Int
+    var city: City
     
     // MARK: Initialization
     
-    init?(title: String, photo: UIImage?, rating: Int) {
+    init?(title: String, photo: UIImage?, rating: Int, city: City) {
         
         // Initialization should fail if there is no name or if the rating is negative.
-        if title.isEmpty || rating < 0  {
+        if title.isEmpty || rating < 0 {
             return nil
         }
         
@@ -29,6 +30,7 @@ class Service {
         self.title = title
         self.photo = photo
         self.rating = rating
+        self.city = city
         
     }
 }
