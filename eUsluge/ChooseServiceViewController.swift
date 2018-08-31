@@ -15,12 +15,8 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var searchTextField: SearchTextField!
     
     let services = ["Cleaning", "Washing", "Dashing"]
-    static let cities = [City(name: "Novi Sad", shortName: "NS", code: "21000"), City(name: "Beograd", shortName: "BG", code: "11000")]
-    
-   
     var filterableCities = [SearchTextFieldItem]()
     var city: City?
-    
     
     
     override func viewDidLoad() {
@@ -34,7 +30,7 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     // Here the cities are loaded, currently hardcoded
     // And added to the filterable collection
     func loadCities() {
-        for city in ChooseServiceViewController.cities {
+        for city in DemoData.cities {
             let item = SearchTextFieldItem(title: (city?.name)!, subtitle: city?.shortName)
             filterableCities.append(item)
         }
@@ -94,7 +90,7 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     // Set the city to pass to another controller
     // TODO: Force the system to return
     func textFieldDidEndEditing(_ textField: UITextField) {
-        for tmpCity in ChooseServiceViewController.cities {
+        for tmpCity in DemoData.cities {
             if tmpCity?.name == searchTextField.text {
                 self.city = tmpCity
             }
@@ -106,6 +102,7 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     // MARK: Actions
     @IBAction func enter(_ sender: UIButton) {
         if searchTextField.text != "" {
+            searchTextField.resignFirstResponder()
             performSegue(withIdentifier: "showServicesTableSegue", sender: self)
         }
     }
