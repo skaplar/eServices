@@ -14,9 +14,11 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var chooseServicePickerView: UIPickerView!
     @IBOutlet weak var searchTextField: SearchTextField!
     
-    let services = ["Cleaning", "Washing", "Dashing"]
+    // let services = ["Cleaning", "Washing", "Dashing"]
+    let services = DemoData.services
     var filterableCities = [SearchTextFieldItem]()
     var city: City?
+    var service: Service?
     
     
     override func viewDidLoad() {
@@ -54,12 +56,13 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return services[row]
+        return services[row].title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // kad se selektuje red da odstampam nesto ili podesim ukoliko mi treba
         print(services[row])
+        service = services[row]
     }
 
     
@@ -76,6 +79,7 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
         let target = serviceTableViewController.topViewController as? ServiceTableViewController
         
         target?.choosenCity = city
+        target?.choosenService = service
     }
  
     

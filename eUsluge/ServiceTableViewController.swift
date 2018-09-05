@@ -14,17 +14,26 @@ class ServiceTableViewController: UITableViewController {
     
     var services = [Service]()
     var choosenCity: City?
+    var choosenService: Service?
     
     
     // MARK : Private methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let possibleServices = DemoData.loadSampleServices()
+        let possibleServices = DemoData.services
+        
+        var tmpServices = [Service]()
         
         for sv in possibleServices {
             if sv.city == choosenCity {
-                services.append(sv)
+                tmpServices.append(sv)
+            }
+        }
+        
+        for tmpService in tmpServices {
+            if tmpService == choosenService! {
+                services.append(tmpService)
             }
         }
 

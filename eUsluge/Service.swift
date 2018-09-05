@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Service {
+class Service: Equatable {
     
     // MARK: Properties
     
@@ -32,5 +32,10 @@ class Service {
         self.rating = rating
         self.city = city
         
+    }
+    
+    public static func == (lhs: Service, rhs: Service) -> Bool {
+        return
+            lhs.title == rhs.title
     }
 }

@@ -20,6 +20,8 @@
 		CE974F6520BAFA740042446A /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6420BAFA740042446A /* RatingControl.swift */; };
 		CE974F6720BB18F30042446A /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */; };
 		CE974F6920BB19F70042446A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6820BB19F70042446A /* Service.swift */; };
+		CE9E9E3D214016C7009099C5 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E9E3C214016C7009099C5 /* Provider.swift */; };
+		CE9E9E3F2140592C009099C5 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E9E3E2140592C009099C5 /* ServiceProvider.swift */; };
 		CEBC5BD820BEAA4E0039DA86 /* ChooseServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		CE974F6420BAFA740042446A /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		CE974F6820BB19F70042446A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		CE9E9E3C214016C7009099C5 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		CE9E9E3E2140592C009099C5 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseServiceViewController.swift; sourceTree = "<group>"; };
 		FBCB321E4AF6020DB82770BC /* Pods_eUsluge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eUsluge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,6 +90,7 @@
 		CE583DBA20AACC680040E717 /* eUsluge */ = {
 			isa = PBXGroup;
 			children = (
+				CE9E9E3B21400FBB009099C5 /* Model */,
 				CE583DBB20AACC680040E717 /* AppDelegate.swift */,
 				CE583DBD20AACC680040E717 /* ServiceViewController.swift */,
 				CE974F6220BAF6EA0042446A /* ServiceTableViewController.swift */,
@@ -102,6 +107,15 @@
 				CE583DC720AACC690040E717 /* Info.plist */,
 			);
 			path = eUsluge;
+			sourceTree = "<group>";
+		};
+		CE9E9E3B21400FBB009099C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE9E9E3C214016C7009099C5 /* Provider.swift */,
+				CE9E9E3E2140592C009099C5 /* ServiceProvider.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FCC62F6E80750CD2673EA2C2 /* Frameworks */ = {
@@ -224,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9E9E3F2140592C009099C5 /* ServiceProvider.swift in Sources */,
 				CE974F6520BAFA740042446A /* RatingControl.swift in Sources */,
 				CE974F6320BAF6EA0042446A /* ServiceTableViewController.swift in Sources */,
 				CE2517522139635A00E424E0 /* City.swift in Sources */,
@@ -233,6 +248,7 @@
 				CE25175021369CC600E424E0 /* LoginViewController.swift in Sources */,
 				CEBC5BD820BEAA4E0039DA86 /* ChooseServiceViewController.swift in Sources */,
 				CE583DBC20AACC680040E717 /* AppDelegate.swift in Sources */,
+				CE9E9E3D214016C7009099C5 /* Provider.swift in Sources */,
 				CE974F6920BB19F70042446A /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
