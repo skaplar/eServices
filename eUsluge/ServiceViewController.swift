@@ -18,16 +18,16 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
      This value is either passed by `ServiceTableViewController` in `prepare(for:sender:)`
      
      */
-    var service: Service?
+    var serviceProvider: ServiceProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        if let service = service {
-            titleTextField.text = service.title
-            photoImageView.image = service.photo
-            ratingControl.rating = service.rating
+        if let serviceProvider = serviceProvider {
+            titleTextField.text = serviceProvider.service.title
+            photoImageView.image = serviceProvider.service.photo
+            ratingControl.rating = serviceProvider.service.rating
         }
     }
 

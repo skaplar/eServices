@@ -13,6 +13,7 @@ class ServiceTableViewController: UITableViewController {
     // MARK Properties
     
     var services = [Service]()
+    var serviceProviders = [ServiceProvider]()
     var choosenCity: City?
     var choosenService: Service?
     
@@ -21,19 +22,12 @@ class ServiceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let possibleServices = DemoData.services
         
-        var tmpServices = [Service]()
+        let possibleServiceProviders = DemoData.serviceProviders
         
-        for sv in possibleServices {
-            if sv.city == choosenCity {
-                tmpServices.append(sv)
-            }
-        }
-        
-        for tmpService in tmpServices {
-            if tmpService == choosenService! {
-                services.append(tmpService)
+        for tmpPossibleServiceProvider in possibleServiceProviders {
+            if tmpPossibleServiceProvider.service.city == choosenCity && tmpPossibleServiceProvider.service == choosenService {
+                serviceProviders.append(tmpPossibleServiceProvider)
             }
         }
 
@@ -57,7 +51,7 @@ class ServiceTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return services.count
+        return serviceProviders.count
     }
 
     
@@ -71,11 +65,11 @@ class ServiceTableViewController: UITableViewController {
         }
         
         // Fetches the appropriate meal for the data source layout.
-        let service = services[indexPath.row]
+        let serviceProvider = serviceProviders[indexPath.row]
         
-        cell.serviceNameLabel.text = service.title
-        cell.photoImageView.image = service.photo
-        cell.ratingControl.rating = service.rating
+        cell.serviceNameLabel.text = serviceProvider.service.title
+        cell.photoImageView.image = serviceProvider.service.photo
+        cell.ratingControl.rating = serviceProvider.service.rating
         
         return cell
     }
@@ -141,8 +135,8 @@ class ServiceTableViewController: UITableViewController {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            let selectedService = services[indexPath.row]
-            serviceDetailViewController.service = selectedService
+            let selectedService = serviceProviders[indexPath.row]
+            serviceDetailViewController.serviceProvider = selectedService
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
