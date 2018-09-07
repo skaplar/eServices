@@ -14,10 +14,12 @@ public class Provider {
     var name: String
     var city: City
     var services: [Service]
+    var photo: UIImage?
     
-    init?(name: String, city: City) {
+    init?(name: String, city: City, photo: UIImage?) {
         self.name = name
         self.city = city
+        self.photo = photo
         self.services = [Service]()
     }
     

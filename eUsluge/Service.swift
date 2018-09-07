@@ -31,7 +31,6 @@ class Service: Equatable {
         self.photo = photo
         self.rating = rating
         self.city = city
-        
     }
     
     public static func == (lhs: Service, rhs: Service) -> Bool {

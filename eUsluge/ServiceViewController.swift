@@ -25,9 +25,9 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Do any additional setup after loading the view, typically from a nib.
         
         if let serviceProvider = serviceProvider {
-            titleTextField.text = serviceProvider.service.title
-            photoImageView.image = serviceProvider.service.photo
-            ratingControl.rating = serviceProvider.service.rating
+            titleTextField.text = serviceProvider.provider.name
+            photoImageView.image = serviceProvider.provider.photo
+            ratingControl.rating = Int(round(serviceProvider.rating))
         }
     }
 

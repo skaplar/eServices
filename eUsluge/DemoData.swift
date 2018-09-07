@@ -46,24 +46,20 @@ public class DemoData {
     static func loadProviders() -> [Provider] {
         var possibleProviders = [Provider]()
         
-        guard let serviceProvider1 = Provider(name: "Karpenterija DOO NS", city: cities[0]!) else {
+        let photo1 = UIImage(named: "logo3")
+        guard let serviceProvider1 = Provider(name: "Karpenterija DOO NS", city: cities[0]!, photo: photo1) else {
             fatalError("Unable to instantiate serviceProvider1")
         }
         
-//        serviceProvider1.services.append(DemoData.services[0])
-//        serviceProvider1.services.append(DemoData.services[1])
-        
-        guard let serviceProvider2 = Provider(name: "Fast Food BG", city: cities[1]!) else {
+        let photo2 = UIImage(named: "logo2")
+        guard let serviceProvider2 = Provider(name: "Fast Food BG", city: cities[1]!, photo: photo2) else {
             fatalError("Unable to instantiate serviceProvider2")
         }
         
-//        serviceProvider2.services.append(DemoData.services[2])
-        
-        guard let serviceProvider3 = Provider(name: "Masazer NS", city: cities[0]!) else {
+        let photo3 = UIImage(named: "logo1")
+        guard let serviceProvider3 = Provider(name: "Masazer NS", city: cities[0]!, photo: photo3) else {
             fatalError("Unable to instantiate serviceProvider3")
         }
-        
-//        serviceProvider3.services.append(DemoData.services[3])
         
         possibleProviders += [serviceProvider1, serviceProvider2, serviceProvider3]
         return possibleProviders
@@ -76,19 +72,33 @@ public class DemoData {
             fatalError("Unable to instantiate sp1")
         }
         
+        serviceProvider1.rating = 3
+        
         guard let serviceProvider2 = ServiceProvider(service: DemoData.services[1], provider: DemoData.providers[0]) else {
             fatalError("Unable to instantiate sp2")
         }
+        
+        serviceProvider2.rating = 4
         
         guard let serviceProvider3 = ServiceProvider(service: DemoData.services[2], provider: DemoData.providers[1]) else {
             fatalError("Unable to instantiate sp3")
         }
         
+        serviceProvider3.rating = 2
+        
         guard let serviceProvider4 = ServiceProvider(service: DemoData.services[3], provider: DemoData.providers[2]) else {
             fatalError("Unable to instantiate sp4")
         }
         
-        possibleServiceProviders += [serviceProvider1, serviceProvider2, serviceProvider3, serviceProvider4]
+        serviceProvider4.rating = 5
+        
+        guard let serviceProvider5 = ServiceProvider(service: DemoData.services[2], provider: DemoData.providers[2]) else {
+            fatalError("Unable to instantiate sp5")
+        }
+        
+        serviceProvider5.rating = 4
+        
+        possibleServiceProviders += [serviceProvider1, serviceProvider2, serviceProvider3, serviceProvider4, serviceProvider5]
         return possibleServiceProviders
     }
 }

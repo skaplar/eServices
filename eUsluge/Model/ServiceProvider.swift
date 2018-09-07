@@ -14,12 +14,11 @@ public class ServiceProvider {
     var service: Service
     var provider: Provider
     var rating: Float = 0.0
+    var price: Float = 0.0
+    var description: String?
     
     init?(service: Service, provider: Provider) {
         self.service = service
         self.provider = provider
     }
-    
-    
-    
 }

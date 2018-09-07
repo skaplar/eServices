@@ -67,9 +67,9 @@ class ServiceTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let serviceProvider = serviceProviders[indexPath.row]
         
-        cell.serviceNameLabel.text = serviceProvider.service.title
-        cell.photoImageView.image = serviceProvider.service.photo
-        cell.ratingControl.rating = serviceProvider.service.rating
+        cell.serviceNameLabel.text = serviceProvider.provider.name
+        cell.photoImageView.image = serviceProvider.provider.photo
+        cell.ratingControl.rating = Int(round(serviceProvider.rating))
         
         return cell
     }
