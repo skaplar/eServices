@@ -16,6 +16,7 @@ public class DemoData {
     static let services = DemoData.loadSampleServices()
     static let providers = DemoData.loadProviders()
     static let serviceProviders = DemoData.loadServiceProviders()
+    static var hiredServices = [HiredService]()
     
     static func loadSampleServices() -> [Service] {
         let photo1 = UIImage(named: "meal1")
@@ -73,32 +74,41 @@ public class DemoData {
         }
         
         serviceProvider1.rating = 3
+        serviceProvider1.price = 230
         
         guard let serviceProvider2 = ServiceProvider(service: DemoData.services[1], provider: DemoData.providers[0]) else {
             fatalError("Unable to instantiate sp2")
         }
         
         serviceProvider2.rating = 4
+        serviceProvider2.price = 400
         
         guard let serviceProvider3 = ServiceProvider(service: DemoData.services[2], provider: DemoData.providers[1]) else {
             fatalError("Unable to instantiate sp3")
         }
         
         serviceProvider3.rating = 2
+        serviceProvider3.price = 500
         
         guard let serviceProvider4 = ServiceProvider(service: DemoData.services[3], provider: DemoData.providers[2]) else {
             fatalError("Unable to instantiate sp4")
         }
         
         serviceProvider4.rating = 5
+        serviceProvider4.price = 600
         
         guard let serviceProvider5 = ServiceProvider(service: DemoData.services[2], provider: DemoData.providers[2]) else {
             fatalError("Unable to instantiate sp5")
         }
         
         serviceProvider5.rating = 4
+        serviceProvider5.price = 700
         
         possibleServiceProviders += [serviceProvider1, serviceProvider2, serviceProvider3, serviceProvider4, serviceProvider5]
         return possibleServiceProviders
+    }
+    
+    static func addHiredService(hs: HiredService) {
+        hiredServices.append(hs)
     }
 }

@@ -23,6 +23,8 @@
 		CE9E9E3D214016C7009099C5 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E9E3C214016C7009099C5 /* Provider.swift */; };
 		CE9E9E3F2140592C009099C5 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9E9E3E2140592C009099C5 /* ServiceProvider.swift */; };
 		CEBC5BD820BEAA4E0039DA86 /* ChooseServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */; };
+		CEDDEC0B21C279AB000EA69A /* HireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC0A21C279AB000EA69A /* HireViewController.swift */; };
+		CEDDEC0D21C2FC52000EA69A /* HiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC0C21C2FC52000EA69A /* HiredService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		CE9E9E3C214016C7009099C5 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		CE9E9E3E2140592C009099C5 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseServiceViewController.swift; sourceTree = "<group>"; };
+		CEDDEC0A21C279AB000EA69A /* HireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HireViewController.swift; sourceTree = "<group>"; };
+		CEDDEC0C21C2FC52000EA69A /* HiredService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiredService.swift; sourceTree = "<group>"; };
 		FBCB321E4AF6020DB82770BC /* Pods_eUsluge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eUsluge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -94,13 +98,12 @@
 				CE583DBB20AACC680040E717 /* AppDelegate.swift */,
 				CE583DBD20AACC680040E717 /* ServiceViewController.swift */,
 				CE974F6220BAF6EA0042446A /* ServiceTableViewController.swift */,
-				CE974F6820BB19F70042446A /* Service.swift */,
 				CE974F6420BAFA740042446A /* RatingControl.swift */,
 				CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */,
 				CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */,
 				CE25174F21369CC600E424E0 /* LoginViewController.swift */,
-				CE2517512139635A00E424E0 /* City.swift */,
 				CE25175321397FA600E424E0 /* DemoData.swift */,
+				CEDDEC0A21C279AB000EA69A /* HireViewController.swift */,
 				CE583DBF20AACC680040E717 /* Main.storyboard */,
 				CE583DC220AACC690040E717 /* Assets.xcassets */,
 				CE583DC420AACC690040E717 /* LaunchScreen.storyboard */,
@@ -112,8 +115,11 @@
 		CE9E9E3B21400FBB009099C5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE2517512139635A00E424E0 /* City.swift */,
+				CE974F6820BB19F70042446A /* Service.swift */,
 				CE9E9E3C214016C7009099C5 /* Provider.swift */,
 				CE9E9E3E2140592C009099C5 /* ServiceProvider.swift */,
+				CEDDEC0C21C2FC52000EA69A /* HiredService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,11 +246,13 @@
 			files = (
 				CE9E9E3F2140592C009099C5 /* ServiceProvider.swift in Sources */,
 				CE974F6520BAFA740042446A /* RatingControl.swift in Sources */,
+				CEDDEC0B21C279AB000EA69A /* HireViewController.swift in Sources */,
 				CE974F6320BAF6EA0042446A /* ServiceTableViewController.swift in Sources */,
 				CE2517522139635A00E424E0 /* City.swift in Sources */,
 				CE974F6720BB18F30042446A /* ServiceTableViewCell.swift in Sources */,
 				CE25175421397FA600E424E0 /* DemoData.swift in Sources */,
 				CE583DBE20AACC680040E717 /* ServiceViewController.swift in Sources */,
+				CEDDEC0D21C2FC52000EA69A /* HiredService.swift in Sources */,
 				CE25175021369CC600E424E0 /* LoginViewController.swift in Sources */,
 				CEBC5BD820BEAA4E0039DA86 /* ChooseServiceViewController.swift in Sources */,
 				CE583DBC20AACC680040E717 /* AppDelegate.swift in Sources */,
