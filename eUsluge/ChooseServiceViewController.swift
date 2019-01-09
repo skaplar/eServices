@@ -110,4 +110,10 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
             performSegue(withIdentifier: "showServicesTableSegue", sender: self)
         }
     }
+    
+    @IBAction func unwindToChooseService(sender: UIStoryboardSegue) {
+        // Ovo ovde mi je kad se pritisne dugme HIRE da se vrati na ovaj ekran
+        // Iako nista ne radi na njega se vracam
+        
+    }
 }

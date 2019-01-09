@@ -25,6 +25,12 @@
 		CEBC5BD820BEAA4E0039DA86 /* ChooseServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */; };
 		CEDDEC0B21C279AB000EA69A /* HireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC0A21C279AB000EA69A /* HireViewController.swift */; };
 		CEDDEC0D21C2FC52000EA69A /* HiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC0C21C2FC52000EA69A /* HiredService.swift */; };
+		CEDDEC0F21C3C0DA000EA69A /* HiredServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC0E21C3C0DA000EA69A /* HiredServiceTableViewCell.swift */; };
+		CEDDEC1121C3D55C000EA69A /* HiredServiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC1021C3D55C000EA69A /* HiredServiceTableViewController.swift */; };
+		CEDDEC1321C5B040000EA69A /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC1221C5B040000EA69A /* Rating.swift */; };
+		CEDDEC1521C65D8B000EA69A /* RatingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC1421C65D8B000EA69A /* RatingsTableViewCell.swift */; };
+		CEDDEC1721C66031000EA69A /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC1621C66031000EA69A /* RatingsTableViewController.swift */; };
+		CEF34A9721E6077800305B38 /* LeaveRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF34A9621E6077800305B38 /* LeaveRatingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +55,12 @@
 		CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseServiceViewController.swift; sourceTree = "<group>"; };
 		CEDDEC0A21C279AB000EA69A /* HireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HireViewController.swift; sourceTree = "<group>"; };
 		CEDDEC0C21C2FC52000EA69A /* HiredService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiredService.swift; sourceTree = "<group>"; };
+		CEDDEC0E21C3C0DA000EA69A /* HiredServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiredServiceTableViewCell.swift; sourceTree = "<group>"; };
+		CEDDEC1021C3D55C000EA69A /* HiredServiceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiredServiceTableViewController.swift; sourceTree = "<group>"; };
+		CEDDEC1221C5B040000EA69A /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		CEDDEC1421C65D8B000EA69A /* RatingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsTableViewCell.swift; sourceTree = "<group>"; };
+		CEDDEC1621C66031000EA69A /* RatingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
+		CEF34A9621E6077800305B38 /* LeaveRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveRatingViewController.swift; sourceTree = "<group>"; };
 		FBCB321E4AF6020DB82770BC /* Pods_eUsluge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eUsluge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,13 +109,18 @@
 				CE9E9E3B21400FBB009099C5 /* Model */,
 				CE583DBB20AACC680040E717 /* AppDelegate.swift */,
 				CE583DBD20AACC680040E717 /* ServiceViewController.swift */,
+				CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */,
 				CE974F6220BAF6EA0042446A /* ServiceTableViewController.swift */,
 				CE974F6420BAFA740042446A /* RatingControl.swift */,
-				CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */,
 				CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */,
 				CE25174F21369CC600E424E0 /* LoginViewController.swift */,
 				CE25175321397FA600E424E0 /* DemoData.swift */,
 				CEDDEC0A21C279AB000EA69A /* HireViewController.swift */,
+				CEDDEC0E21C3C0DA000EA69A /* HiredServiceTableViewCell.swift */,
+				CEDDEC1021C3D55C000EA69A /* HiredServiceTableViewController.swift */,
+				CEDDEC1421C65D8B000EA69A /* RatingsTableViewCell.swift */,
+				CEDDEC1621C66031000EA69A /* RatingsTableViewController.swift */,
+				CEF34A9621E6077800305B38 /* LeaveRatingViewController.swift */,
 				CE583DBF20AACC680040E717 /* Main.storyboard */,
 				CE583DC220AACC690040E717 /* Assets.xcassets */,
 				CE583DC420AACC690040E717 /* LaunchScreen.storyboard */,
@@ -120,6 +137,7 @@
 				CE9E9E3C214016C7009099C5 /* Provider.swift */,
 				CE9E9E3E2140592C009099C5 /* ServiceProvider.swift */,
 				CEDDEC0C21C2FC52000EA69A /* HiredService.swift */,
+				CEDDEC1221C5B040000EA69A /* Rating.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,15 +262,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDDEC1521C65D8B000EA69A /* RatingsTableViewCell.swift in Sources */,
+				CEDDEC0F21C3C0DA000EA69A /* HiredServiceTableViewCell.swift in Sources */,
 				CE9E9E3F2140592C009099C5 /* ServiceProvider.swift in Sources */,
+				CEDDEC1321C5B040000EA69A /* Rating.swift in Sources */,
 				CE974F6520BAFA740042446A /* RatingControl.swift in Sources */,
 				CEDDEC0B21C279AB000EA69A /* HireViewController.swift in Sources */,
+				CEDDEC1121C3D55C000EA69A /* HiredServiceTableViewController.swift in Sources */,
+				CEF34A9721E6077800305B38 /* LeaveRatingViewController.swift in Sources */,
 				CE974F6320BAF6EA0042446A /* ServiceTableViewController.swift in Sources */,
 				CE2517522139635A00E424E0 /* City.swift in Sources */,
 				CE974F6720BB18F30042446A /* ServiceTableViewCell.swift in Sources */,
 				CE25175421397FA600E424E0 /* DemoData.swift in Sources */,
 				CE583DBE20AACC680040E717 /* ServiceViewController.swift in Sources */,
 				CEDDEC0D21C2FC52000EA69A /* HiredService.swift in Sources */,
+				CEDDEC1721C66031000EA69A /* RatingsTableViewController.swift in Sources */,
 				CE25175021369CC600E424E0 /* LoginViewController.swift in Sources */,
 				CEBC5BD820BEAA4E0039DA86 /* ChooseServiceViewController.swift in Sources */,
 				CE583DBC20AACC680040E717 /* AppDelegate.swift in Sources */,

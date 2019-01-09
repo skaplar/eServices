@@ -14,10 +14,12 @@ class HiredService {
     var serviceProvider: ServiceProvider
     var finished: Bool = false
     var user: String = ""
+    var date: Date?
     
-    init?(serviceProvider: ServiceProvider, user: String) {
+    init?(serviceProvider: ServiceProvider, user: String, date: Date) {
         self.serviceProvider = serviceProvider
         self.user = user
+        self.date = date
     }
     
     

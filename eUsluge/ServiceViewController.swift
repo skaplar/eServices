@@ -71,6 +71,15 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
             
             hireServiceViewController.serviceProvider = serviceProvider
+        case "showRatingsSegue":
+            guard let showRatingsTableViewController = segue.destination as? RatingsTableViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            showRatingsTableViewController.serviceProvider = serviceProvider
+        case "unwindToChooseService":
+            print("Pozove se unwind iako nema funkciju")
+            
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
@@ -78,8 +87,10 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     func finishService() {
-        let tmp = HiredService(serviceProvider: serviceProvider!, user: "pera")
+        let tmp = HiredService(serviceProvider: serviceProvider!, user: "pera", date: Date())
         DemoData.addHiredService(hs: tmp!)
+        print("Dodjem do finisha")
+        performSegue(withIdentifier: "unwindToChooseService", sender: self)
     }
     
 }
