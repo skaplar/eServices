@@ -43,10 +43,8 @@ class LeaveRatingViewController: UIViewController {
                 let rating = Rating()
                 rating.comment = commentTextView.text.description
                 rating.rating = Float(serviceRatingControl.rating)
+                // TODO: Pozvati REST Servis eventually
                 serviceProvider?.provider.ratings.append(rating)
-            
-                
-            
             default:
                 fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }

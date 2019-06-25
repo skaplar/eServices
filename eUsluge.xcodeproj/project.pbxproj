@@ -30,7 +30,15 @@
 		CEDDEC1321C5B040000EA69A /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC1221C5B040000EA69A /* Rating.swift */; };
 		CEDDEC1521C65D8B000EA69A /* RatingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC1421C65D8B000EA69A /* RatingsTableViewCell.swift */; };
 		CEDDEC1721C66031000EA69A /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDEC1621C66031000EA69A /* RatingsTableViewController.swift */; };
+		CEE1CDC022BFB7BA004E9063 /* ServiceProviderFromServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1CDBF22BFB7BA004E9063 /* ServiceProviderFromServer.swift */; };
+		CEE1CDC522C0CAD1004E9063 /* ServiceForCityFromServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1CDC422C0CAD1004E9063 /* ServiceForCityFromServer.swift */; };
+		CEE1CDC722C0DE3A004E9063 /* ProviderFromServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1CDC622C0DE3A004E9063 /* ProviderFromServer.swift */; };
 		CEF34A9721E6077800305B38 /* LeaveRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF34A9621E6077800305B38 /* LeaveRatingViewController.swift */; };
+		CEF34A9E21EE244200305B38 /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF34A9D21EE244200305B38 /* NetworkingClient.swift */; };
+		CEF34AA021EE2AFE00305B38 /* CityWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF34A9F21EE2AFE00305B38 /* CityWrapper.swift */; };
+		CEF34AA221EE527A00305B38 /* NewNetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF34AA121EE527A00305B38 /* NewNetworkingClient.swift */; };
+		CEF34AA421EE55DA00305B38 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF34AA321EE55DA00305B38 /* Utils.swift */; };
+		CEF34AA821F1D22200305B38 /* ServiceFromServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF34AA721F1D22200305B38 /* ServiceFromServer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +68,15 @@
 		CEDDEC1221C5B040000EA69A /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		CEDDEC1421C65D8B000EA69A /* RatingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsTableViewCell.swift; sourceTree = "<group>"; };
 		CEDDEC1621C66031000EA69A /* RatingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
+		CEE1CDBF22BFB7BA004E9063 /* ServiceProviderFromServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServiceProviderFromServer.swift; path = ../Model/ServiceProviderFromServer.swift; sourceTree = "<group>"; };
+		CEE1CDC422C0CAD1004E9063 /* ServiceForCityFromServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceForCityFromServer.swift; sourceTree = "<group>"; };
+		CEE1CDC622C0DE3A004E9063 /* ProviderFromServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderFromServer.swift; sourceTree = "<group>"; };
 		CEF34A9621E6077800305B38 /* LeaveRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveRatingViewController.swift; sourceTree = "<group>"; };
+		CEF34A9D21EE244200305B38 /* NetworkingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
+		CEF34A9F21EE2AFE00305B38 /* CityWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWrapper.swift; sourceTree = "<group>"; };
+		CEF34AA121EE527A00305B38 /* NewNetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNetworkingClient.swift; sourceTree = "<group>"; };
+		CEF34AA321EE55DA00305B38 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		CEF34AA721F1D22200305B38 /* ServiceFromServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFromServer.swift; sourceTree = "<group>"; };
 		FBCB321E4AF6020DB82770BC /* Pods_eUsluge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_eUsluge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -106,6 +122,9 @@
 		CE583DBA20AACC680040E717 /* eUsluge */ = {
 			isa = PBXGroup;
 			children = (
+				CEE1CDC122C0C8E7004E9063 /* ModelFromServer */,
+				CEF34AA621F1CD2400305B38 /* Networking */,
+				CEF34AA521F1CC5D00305B38 /* Utils */,
 				CE9E9E3B21400FBB009099C5 /* Model */,
 				CE583DBB20AACC680040E717 /* AppDelegate.swift */,
 				CE583DBD20AACC680040E717 /* ServiceViewController.swift */,
@@ -114,7 +133,6 @@
 				CE974F6420BAFA740042446A /* RatingControl.swift */,
 				CEBC5BD720BEAA4E0039DA86 /* ChooseServiceViewController.swift */,
 				CE25174F21369CC600E424E0 /* LoginViewController.swift */,
-				CE25175321397FA600E424E0 /* DemoData.swift */,
 				CEDDEC0A21C279AB000EA69A /* HireViewController.swift */,
 				CEDDEC0E21C3C0DA000EA69A /* HiredServiceTableViewCell.swift */,
 				CEDDEC1021C3D55C000EA69A /* HiredServiceTableViewController.swift */,
@@ -138,8 +156,38 @@
 				CE9E9E3E2140592C009099C5 /* ServiceProvider.swift */,
 				CEDDEC0C21C2FC52000EA69A /* HiredService.swift */,
 				CEDDEC1221C5B040000EA69A /* Rating.swift */,
+				CEF34A9F21EE2AFE00305B38 /* CityWrapper.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CEE1CDC122C0C8E7004E9063 /* ModelFromServer */ = {
+			isa = PBXGroup;
+			children = (
+				CEE1CDBF22BFB7BA004E9063 /* ServiceProviderFromServer.swift */,
+				CEE1CDC422C0CAD1004E9063 /* ServiceForCityFromServer.swift */,
+				CEE1CDC622C0DE3A004E9063 /* ProviderFromServer.swift */,
+				CEF34AA721F1D22200305B38 /* ServiceFromServer.swift */,
+			);
+			path = ModelFromServer;
+			sourceTree = "<group>";
+		};
+		CEF34AA521F1CC5D00305B38 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CEF34AA321EE55DA00305B38 /* Utils.swift */,
+				CE25175321397FA600E424E0 /* DemoData.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CEF34AA621F1CD2400305B38 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CEF34A9D21EE244200305B38 /* NetworkingClient.swift */,
+				CEF34AA121EE527A00305B38 /* NewNetworkingClient.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		FCC62F6E80750CD2673EA2C2 /* Frameworks */ = {
@@ -184,6 +232,7 @@
 				TargetAttributes = {
 					CE583DB720AACC680040E717 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -244,10 +293,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-eUsluge/Pods-eUsluge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DateTimePicker/DateTimePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/SearchTextField/SearchTextField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTimePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SearchTextField.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,22 +319,30 @@
 				CEDDEC0F21C3C0DA000EA69A /* HiredServiceTableViewCell.swift in Sources */,
 				CE9E9E3F2140592C009099C5 /* ServiceProvider.swift in Sources */,
 				CEDDEC1321C5B040000EA69A /* Rating.swift in Sources */,
+				CEF34AA821F1D22200305B38 /* ServiceFromServer.swift in Sources */,
+				CEE1CDC722C0DE3A004E9063 /* ProviderFromServer.swift in Sources */,
 				CE974F6520BAFA740042446A /* RatingControl.swift in Sources */,
 				CEDDEC0B21C279AB000EA69A /* HireViewController.swift in Sources */,
+				CEF34AA021EE2AFE00305B38 /* CityWrapper.swift in Sources */,
 				CEDDEC1121C3D55C000EA69A /* HiredServiceTableViewController.swift in Sources */,
 				CEF34A9721E6077800305B38 /* LeaveRatingViewController.swift in Sources */,
 				CE974F6320BAF6EA0042446A /* ServiceTableViewController.swift in Sources */,
 				CE2517522139635A00E424E0 /* City.swift in Sources */,
+				CEE1CDC522C0CAD1004E9063 /* ServiceForCityFromServer.swift in Sources */,
 				CE974F6720BB18F30042446A /* ServiceTableViewCell.swift in Sources */,
 				CE25175421397FA600E424E0 /* DemoData.swift in Sources */,
 				CE583DBE20AACC680040E717 /* ServiceViewController.swift in Sources */,
 				CEDDEC0D21C2FC52000EA69A /* HiredService.swift in Sources */,
+				CEF34A9E21EE244200305B38 /* NetworkingClient.swift in Sources */,
 				CEDDEC1721C66031000EA69A /* RatingsTableViewController.swift in Sources */,
 				CE25175021369CC600E424E0 /* LoginViewController.swift in Sources */,
+				CEE1CDC022BFB7BA004E9063 /* ServiceProviderFromServer.swift in Sources */,
 				CEBC5BD820BEAA4E0039DA86 /* ChooseServiceViewController.swift in Sources */,
 				CE583DBC20AACC680040E717 /* AppDelegate.swift in Sources */,
 				CE9E9E3D214016C7009099C5 /* Provider.swift in Sources */,
 				CE974F6920BB19F70042446A /* Service.swift in Sources */,
+				CEF34AA221EE527A00305B38 /* NewNetworkingClient.swift in Sources */,
+				CEF34AA421EE55DA00305B38 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,7 +495,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rs.ftn.eUsluge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -452,7 +513,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rs.ftn.eUsluge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

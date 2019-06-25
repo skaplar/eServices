@@ -30,9 +30,9 @@ class LoginViewController: UIViewController {
         if emailTextField.text == "pera@pera.com" && passwordTextField.text == "pera" {
          performSegue(withIdentifier: "homeSegue", sender: self)
         } else {
-            let alert = UIAlertController(title: "Not found!", message: "Incorrect credentials!", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Not found!", message: "Incorrect credentials!", preferredStyle: UIAlertController.Style.alert)
             
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             
             self.present(alert, animated: true, completion: nil)
         }

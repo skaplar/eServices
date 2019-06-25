@@ -8,6 +8,7 @@
 
 import UIKit
 import SearchTextField
+import Alamofire
 
 class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate{
    
@@ -15,10 +16,12 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var searchTextField: SearchTextField!
     
     // let services = ["Cleaning", "Washing", "Dashing"]
-    let services = DemoData.services
+    //let services = DemoData.services
+    var services = [Service]()
     var filterableCities = [SearchTextFieldItem]()
     var city: City?
     var service: Service?
+    var cities =  [City]()
     
     
     override func viewDidLoad() {
@@ -27,18 +30,75 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
         searchTextField.delegate = self
         //searchTextField.filterStrings(["Novi Sad", "Beograd"])
         loadCities()
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     
     // Here the cities are loaded, currently hardcoded
     // And added to the filterable collection
     func loadCities() {
+        let nnc = NewNetworkingClient()
+        nnc.genericFetch(urlString: Utils.CITIES) { (cities: [City]) in
+            for city in cities {
+                let item = SearchTextFieldItem(title: (city.name), subtitle: city.shortname)
+                self.filterableCities.append(item)
+            }
+            self.cities = cities
+            self.searchTextField.filterItems(self.filterableCities)
+            
+            // After loading the cities, in the callback we call the load Services
+            // which relies on previous cities
+            self.loadServices()
+        }
+ 
+        /*
         for city in DemoData.cities {
-            let item = SearchTextFieldItem(title: (city?.name)!, subtitle: city?.shortName)
+            let item = SearchTextFieldItem(title: (city?.name)!, subtitle: city?.shortname)
             filterableCities.append(item)
         }
-        
         searchTextField.filterItems(filterableCities)
+         */
     }
+    
+    func loadServices() {
+        let nnc = NewNetworkingClient()
+       
+        nnc.genericFetch(urlString: Utils.SERVICES) { (tmpServices: [ServiceFromServer]) in
+            print(tmpServices)
+            for tmpService in tmpServices {
+                let city = self.getCity(cityId: tmpService._city)
+                Alamofire.AF.request(Utils.PHOTOS + "/" + tmpService.img).responseData { response in
+                    var slika: UIImage?
+                    if let data = response.data {
+                        slika = UIImage(data: data, scale:1)
+                    }
+                    
+                    let service = Service(title: tmpService.title, photo: slika, rating: 0, city: city!, id: tmpService._id)
+                    
+                    // OK ovo da stoji ovde je los dizajn
+                    // Ali stavio sam ga da ne puca aplikacija
+                    // puca iz razloga zato sto se prvo ucita view pa tek onda se fetchuju podaci sa servera
+                    // razradi kako da resis to
+                    self.services.append(service!)
+                    self.chooseServicePickerView.reloadAllComponents()
+                }
+            }
+        }
+    }
+    
+    func getCity(cityId: String) -> City? {
+        for city in cities {
+            if (city._id == cityId) {
+                return city
+            }
+        }
+        return nil
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,8 +121,10 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // kad se selektuje red da odstampam nesto ili podesim ukoliko mi treba
-        print(services[row])
-        service = services[row]
+        //print(services[row])
+        if services.count > 0 {
+            service = services[row]
+        }
     }
 
     
@@ -94,8 +156,14 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     // Set the city to pass to another controller
     // TODO: Force the system to return
     func textFieldDidEndEditing(_ textField: UITextField) {
-        for tmpCity in DemoData.cities {
-            if tmpCity?.name == searchTextField.text {
+        // Ovako je bilo pre prelaska na server
+//        for tmpCity in DemoData.cities {
+//            if tmpCity?.name == searchTextField.text {
+//                self.city = tmpCity
+//            }
+//        }
+        for tmpCity in cities {
+            if tmpCity.name == searchTextField.text {
                 self.city = tmpCity
             }
         }

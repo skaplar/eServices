@@ -23,19 +23,19 @@ public class DemoData {
         let photo2 = UIImage(named: "meal2")
         let photo3 = UIImage(named: "meal3")
         
-        guard let service1 = Service(title: "Cleaning the carpets", photo: photo1, rating: 4, city: DemoData.cities[0]!) else {
+        guard let service1 = Service(title: "Cleaning the carpets", photo: photo1, rating: 4, city: DemoData.cities[0]!, id: "1") else {
             fatalError("Unable to instantiate service1")
         }
         
-        guard let service2 = Service(title: "Cleaning the floors", photo: photo2, rating: 3, city: DemoData.cities[0]!) else {
+        guard let service2 = Service(title: "Cleaning the floors", photo: photo2, rating: 3, city: DemoData.cities[0]!, id: "2") else {
             fatalError("Unable to instantiate service2")
         }
         
-        guard let service3 = Service(title: "Picking up the food", photo: photo3, rating: 2, city: DemoData.cities[0]!) else {
+        guard let service3 = Service(title: "Picking up the food", photo: photo3, rating: 2, city: DemoData.cities[0]!, id: "3") else {
             fatalError("Unable to instantiate service3")
         }
         
-        guard let service4 = Service(title: "Oil Massage", photo: photo3, rating: 2, city: DemoData.cities[1]!) else {
+        guard let service4 = Service(title: "Oil Massage", photo: photo3, rating: 2, city: DemoData.cities[1]!, id: "4") else {
             fatalError("Unable to instantiate service4")
         }
         

@@ -8,12 +8,15 @@
 
 import UIKit
 import os.log
+import Alamofire
 
 class ServiceTableViewController: UITableViewController {
     // MARK Properties
     
     var services = [Service]()
     var serviceProviders = [ServiceProvider]()
+    
+    // Ovo se setuje iz ChooseServiceViewController
     var choosenCity: City?
     var choosenService: Service?
     
@@ -23,14 +26,44 @@ class ServiceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let possibleServiceProviders = DemoData.serviceProviders
-        
-        for tmpPossibleServiceProvider in possibleServiceProviders {
-            if tmpPossibleServiceProvider.service.city == choosenCity && tmpPossibleServiceProvider.service == choosenService {
-                serviceProviders.append(tmpPossibleServiceProvider)
+//        let possibleServiceProviders = DemoData.serviceProviders
+//
+//        for tmpPossibleServiceProvider in possibleServiceProviders {
+//            if tmpPossibleServiceProvider.service.city == choosenCity && tmpPossibleServiceProvider.service == choosenService {
+//                serviceProviders.append(tmpPossibleServiceProvider)
+//            }
+//        }
+        let nnc = NewNetworkingClient()
+        let sers = Utils.SERVICEFORCITY + "/" + choosenCity!._id + "/" + choosenService!._id
+        nnc.genericFetch(urlString: sers) { (serviceproviders2: [ServiceProviderFromServer]) in
+            
+            for tmpProv in serviceproviders2 {
+                Alamofire.AF.request(Utils.PHOTOS + "/" + (tmpProv._serviceforcity._service.img)).responseData { response in
+                    var slika: UIImage?
+                    if let data = response.data {
+                        slika = UIImage(data: data, scale:1)
+                    }
+                    
+                    let s2 = Service(title: (tmpProv._serviceforcity._service.title), photo: slika, rating: 0, city: tmpProv._serviceforcity._city!, id: "1")
+                    let provider = Provider(name: tmpProv._provider.name, city: tmpProv._provider._city, photo: slika)
+                    
+                    var sp = ServiceProvider(service: s2!, provider: provider!)
+                    sp?.rating = tmpProv.rating
+                    sp?.price = tmpProv.price
+                    sp?.description = tmpProv.description
+                    
+                    print(tmpProv.description)
+                    print(tmpProv.rating)
+                    print(tmpProv.price)
+                    print(sp!.rating)
+                    
+                    self.serviceProviders.append(sp!)
+                    
+                    self.tableView.reloadData()
+                }
+                // Ovde sad treba pretabati u odgovarajuci service provider
             }
         }
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

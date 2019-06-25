@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import DateTimePicker
 
-class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DateTimePickerDelegate {
 
 
     @IBOutlet weak var photoImageView: UIImageView!
@@ -34,7 +35,7 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
             ratingControl.rating = Int(round(serviceProvider.rating))
             priceLabelView.text = String(describing: serviceProvider.price)
             serviceLabelView.text = serviceProvider.service.title
-            cityLabelView.text = serviceProvider.service.city.name
+            cityLabelView.text = serviceProvider.service.city?.name
         }
     }
 
@@ -49,13 +50,53 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     
     @IBAction func hireAction(_ sender: Any) {
-        let alert = UIAlertController(title: "Are you sure?", message: "Please confirm your selection", preferredStyle: UIAlertControllerStyle.alert)
+       /* let alert = UIAlertController(title: "Are you sure?", message: "Please confirm your selection", preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {action in
+        
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: {action in
             self.finishService() }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
         
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)*/
+        
+        let min = Date().addingTimeInterval(-60 * 60 * 24 * 4)
+        let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
+        let picker = DateTimePicker.create(minimumDate: min, maximumDate: max)
+        
+        // customize your picker
+        //        picker.timeInterval = DateTimePicker.MinuteInterval.thirty
+        //        picker.locale = Locale(identifier: "en_GB")
+        //
+        //        picker.todayButtonTitle = "Today"
+        //        picker.is12HourFormat = true
+        //        picker.dateFormat = "hh:mm aa dd/MM/YYYY"
+        //        picker.isTimePickerOnly = true
+        picker.includeMonth = true // if true the month shows at bottom of date cell
+        picker.highlightColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
+        picker.darkColor = UIColor.darkGray
+        picker.doneButtonTitle = "!! DONE DONE !!"
+        picker.doneBackgroundColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
+        picker.completionHandler = { date in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm aa dd/MM/YYYY"
+            self.title = formatter.string(from: date)
+        }
+        picker.delegate = self
+        
+        
+        // add picker to your view
+        // don't try to make customize width and height of the picker,
+        // you'll end up with corrupted looking UI
+        //        picker.frame = CGRect(x: 0, y: 100, width: picker.frame.size.width, height: picker.frame.size.height)
+        // set a dismissHandler if necessary
+        //        picker.dismissHandler = {
+        //            picker.removeFromSuperview()
+        //        }
+        //        self.view.addSubview(picker)
+        
+        // or show it like a modal
+        picker.show()
     }
     
     
@@ -79,7 +120,11 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
             showRatingsTableViewController.serviceProvider = serviceProvider
         case "unwindToChooseService":
             print("Pozove se unwind iako nema funkciju")
-            
+        case "showDatePickerSegue":
+            print("Show date picker")
+//            guard let showRatingsTableViewController = segue.destination as? HireViewController else {
+//                fatalError("Unexpected destination: \(segue.destination)")
+//            }
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
@@ -91,6 +136,10 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
         DemoData.addHiredService(hs: tmp!)
         print("Dodjem do finisha")
         performSegue(withIdentifier: "unwindToChooseService", sender: self)
+    }
+    
+    func dateTimePicker(_ picker: DateTimePicker, didSelectDate: Date) {
+        title = picker.selectedDateString
     }
     
 }

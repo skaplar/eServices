@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import DateTimePicker
 
-class HireViewController: UIViewController {
+class HireViewController: UIViewController, DateTimePickerDelegate {
+    
     
     // MARK: Properties
     var serviceProvider: ServiceProvider?
@@ -17,9 +19,9 @@ class HireViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        serviceProviderNameLabel.text = serviceProvider!.provider.name
+        //serviceProviderNameLabel.text = serviceProvider!.provider.name
         // Do any additional setup after loading the view.
-        print(serviceProvider!)
+        //print(serviceProvider!)
     }
     
 
@@ -41,5 +43,8 @@ class HireViewController: UIViewController {
     
     }
     
+    func dateTimePicker(_ picker: DateTimePicker, didSelectDate: Date) {
+        title = picker.selectedDateString
+    }
 
 }
