@@ -22,21 +22,19 @@ class ServiceTableViewController: UITableViewController {
     
     
     // MARK : Private methods
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        let possibleServiceProviders = DemoData.serviceProviders
-//
 //        for tmpPossibleServiceProvider in possibleServiceProviders {
 //            if tmpPossibleServiceProvider.service.city == choosenCity && tmpPossibleServiceProvider.service == choosenService {
 //                serviceProviders.append(tmpPossibleServiceProvider)
 //            }
 //        }
+        
         let nnc = NewNetworkingClient()
         let sers = Utils.SERVICEFORCITY + "/" + choosenCity!._id + "/" + choosenService!._id
         nnc.genericFetch(urlString: sers) { (serviceproviders2: [ServiceProviderFromServer]) in
-            
             for tmpProv in serviceproviders2 {
                 Alamofire.AF.request(Utils.PHOTOS + "/" + (tmpProv._serviceforcity._service.img)).responseData { response in
                     var slika: UIImage?
@@ -44,21 +42,23 @@ class ServiceTableViewController: UITableViewController {
                         slika = UIImage(data: data, scale:1)
                     }
                     
-                    let s2 = Service(title: (tmpProv._serviceforcity._service.title), photo: slika, rating: 0, city: tmpProv._serviceforcity._city!, id: "1")
+                    let s2 = Service(
+                        title: (tmpProv._serviceforcity._service.title),
+                        photo: slika,
+                        rating: Int(tmpProv.rating),
+                        city: tmpProv._serviceforcity._city!,
+                        id: tmpProv._serviceforcity._service._id
+                    )
+                    
                     let provider = Provider(name: tmpProv._provider.name, city: tmpProv._provider._city, photo: slika)
                     
-                    var sp = ServiceProvider(service: s2!, provider: provider!)
+                    let sp = ServiceProvider(service: s2!, provider: provider!)
                     sp?.rating = tmpProv.rating
                     sp?.price = tmpProv.price
                     sp?.description = tmpProv.description
-                    
-                    print(tmpProv.description)
-                    print(tmpProv.rating)
-                    print(tmpProv.price)
-                    print(sp!.rating)
+                    sp?.id = tmpProv._id
                     
                     self.serviceProviders.append(sp!)
-                    
                     self.tableView.reloadData()
                 }
                 // Ovde sad treba pretabati u odgovarajuci service provider

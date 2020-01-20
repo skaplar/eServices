@@ -16,6 +16,7 @@ class Utils {
     public static let PHOTOS = API + "images"
     public static let SERVICEPROVIDERS = API + "serviceproviders"
     public static let SERVICEFORCITY = API + "serviceforcity"
+    public static let ARRANGEDSERVICE = API + "arrangedservices"
     
     func stariPrimeri() {
  /*

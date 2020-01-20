@@ -11,6 +11,7 @@ import UIKit
 
 public class ServiceProvider {
     
+    var id: String = ""
     var service: Service
     var provider: Provider
     var rating: Float = 0.0

@@ -8,6 +8,8 @@
 
 import UIKit
 import DateTimePicker
+import Alamofire
+
 
 class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DateTimePickerDelegate {
 
@@ -21,14 +23,12 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     /*
      This value is either passed by `ServiceTableViewController` in `prepare(for:sender:)`
-     
      */
     var serviceProvider: ServiceProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+
         if let serviceProvider = serviceProvider {
             providerLabelView.text = serviceProvider.provider.name
             photoImageView.image = serviceProvider.provider.photo
@@ -47,7 +47,6 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     // MARK: Actions
     // Ovo ako bude trebalo da se odabere slika
-    
     
     @IBAction func hireAction(_ sender: Any) {
        /* let alert = UIAlertController(title: "Are you sure?", message: "Please confirm your selection", preferredStyle: UIAlertController.Style.alert)
@@ -75,12 +74,46 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
         picker.includeMonth = true // if true the month shows at bottom of date cell
         picker.highlightColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
         picker.darkColor = UIColor.darkGray
-        picker.doneButtonTitle = "!! DONE DONE !!"
+        picker.doneButtonTitle = "Reserve"
         picker.doneBackgroundColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
+        picker.timeInterval = DateTimePicker.MinuteInterval.thirty
         picker.completionHandler = { date in
             let formatter = DateFormatter()
-            formatter.dateFormat = "hh:mm aa dd/MM/YYYY"
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
             self.title = formatter.string(from: date)
+            
+            // FINISH THIS
+            let newH: [String: Any] =
+                ["_serviceprovider" : self.serviceProvider!.id,
+                 "slot" : formatter.string(from: date) ]
+            
+            Alamofire.AF.request(Utils.ARRANGEDSERVICE, method: .post, parameters: newH,
+                              encoding: JSONEncoding.default)
+                .responseJSON { response in
+                    guard response.error == nil else {
+                        // got an error in getting the data, need to handle it
+                        print("error")
+                        print(response.error!)
+                        return
+                    }
+                    
+                    // unwrap JSON
+                    guard let json = response.value as? [String: Any] else {
+                        print("No JSON")
+                        // Could not get JSON
+                        return
+                    }
+                    
+                    print(json)
+                    // use json
+//                    guard let postTitle = json["title"] as? String else {
+//                        // Could not get title from json
+//                        return
+//                    }
+//                    print("Post title: " + postTitle)
+            }
+            
+            
         }
         picker.delegate = self
         
@@ -104,27 +137,26 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
-        
         switch(segue.identifier ?? "") {
-        case "HireServiceSegue":
-            guard let hireServiceViewController = segue.destination as? HireViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            hireServiceViewController.serviceProvider = serviceProvider
-        case "showRatingsSegue":
-            guard let showRatingsTableViewController = segue.destination as? RatingsTableViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            showRatingsTableViewController.serviceProvider = serviceProvider
-        case "unwindToChooseService":
-            print("Pozove se unwind iako nema funkciju")
-        case "showDatePickerSegue":
-            print("Show date picker")
-//            guard let showRatingsTableViewController = segue.destination as? HireViewController else {
-//                fatalError("Unexpected destination: \(segue.destination)")
-//            }
+            case "HireServiceSegue":
+                guard let hireServiceViewController = segue.destination as? HireViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                
+                hireServiceViewController.serviceProvider = serviceProvider
+            case "showRatingsSegue":
+                guard let showRatingsTableViewController = segue.destination as? RatingsTableViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                
+                showRatingsTableViewController.serviceProvider = serviceProvider
+            case "unwindToChooseService":
+                print("Pozove se unwind iako nema funkciju")
+            case "showDatePickerSegue":
+                print("Show date picker")
+    //            guard let showRatingsTableViewController = segue.destination as? HireViewController else {
+    //                fatalError("Unexpected destination: \(segue.destination)")
+    //            }
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }

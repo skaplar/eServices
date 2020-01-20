@@ -9,9 +9,12 @@
 import UIKit
 import SearchTextField
 import Alamofire
+import SwiftUI
 
 class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate{
    
+    let swiftUIView = PendingServicesUIView()
+    
     @IBOutlet weak var chooseServicePickerView: UIPickerView!
     @IBOutlet weak var searchTextField: SearchTextField!
     
@@ -30,7 +33,6 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
         searchTextField.delegate = self
         //searchTextField.filterStrings(["Novi Sad", "Beograd"])
         loadCities()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +68,6 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     
     func loadServices() {
         let nnc = NewNetworkingClient()
-       
         nnc.genericFetch(urlString: Utils.SERVICES) { (tmpServices: [ServiceFromServer]) in
             print(tmpServices)
             for tmpService in tmpServices {

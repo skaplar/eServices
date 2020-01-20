@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import Alamofire
 
 class HiredServiceTableViewController: UITableViewController {
 
     // MARK: Properties
-    var hiredServices = [HiredService]()
+//    var hiredServices = [HiredService]()
+    var hiredServices = [ArrangedServiceFromServer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -22,25 +26,37 @@ class HiredServiceTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        hiredServices = DemoData.hiredServices
+//        hiredServices = DemoData.hiredServices
         print(hiredServices.count)
+        
     }
     
+    func loadArrServices() {
+        let nnc = NewNetworkingClient()
+        self.hiredServices.removeAll()
+        nnc.genericFetch(urlString: (Utils.ARRANGEDSERVICE + "/123")) { (arrangedServices: [ArrangedServiceFromServer]) in
+               for arrService in arrangedServices {
+                self.hiredServices.append(arrService)
+                self.tableView.reloadData()
+               }
+               
+           }
     
+       }
     
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        hiredServices = DemoData.hiredServices
+//        hiredServices = DemoData.hiredServices
         // Ovo bih verovatno trebalo drugacije
         // Odnosno da kad se doda novi red u model
         // da se u tabelu doda samo jedan red
         // Medjutim, posto se posle dodavanja reda u model
         // ne vraca na tabelu, nego na pocetnu stranicu
         // nemamo referencu na tableView pa zbog toga ne mozemo da dodamo samo jedan red
-        tableView.reloadData()
+        loadArrServices()
+//        tableView.reloadData()
         print(hiredServices.count)
-        print("Pozovo se! ")
     }
     
     
@@ -65,18 +81,22 @@ class HiredServiceTableViewController: UITableViewController {
         }
         
         let hiredService = hiredServices[indexPath.row]
-        print(hiredService.finished)
         
-        cell.serviceProviderImageView.image = hiredService.serviceProvider.service.photo
-        cell.serviceProviderNameLabel.text = hiredService.serviceProvider.provider.name
-        cell.serviceCityLabel.text = hiredService.serviceProvider.provider.city.name
+        Alamofire.AF.request(Utils.PHOTOS + "/" + (hiredService._serviceprovider._serviceforcity._service.img)).responseData { response in
+            var slika: UIImage?
+            if let data = response.data {
+                slika = UIImage(data: data, scale:1)
+                 cell.serviceProviderImageView.image = slika
+            }
+        }
+        
+//        cell.serviceProviderImageView.image = hiredService.serviceProvider.service.photo
+        
+        cell.serviceProviderNameLabel.text = hiredService._serviceprovider._provider.name
+        cell.serviceCityLabel.text = hiredService._serviceprovider._provider._city.name
         var msg = ""
-        hiredService.finished ? (msg = "Completed") : (msg = "Uncompleted")
-        //cell.serviceFinishedLabel.text = String(describing: hiredService.finished)
+        hiredService.accepted ? (msg = "Completed") : (msg = "Uncompleted")
         cell.serviceFinishedLabel.text = msg
-
-        // Configure the cell...
-
         return cell
     }
     

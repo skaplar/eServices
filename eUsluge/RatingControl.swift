@@ -17,7 +17,8 @@ import UIKit
             updateButtonSelectionStates()
         }
     }
-    @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
+    // Originalna velicina 44.0
+    @IBInspectable var starSize: CGSize = CGSize(width: 22.0, height: 22.0) {
         didSet {
             setupButtons()
         }
@@ -95,12 +96,15 @@ import UIKit
             button.heightAnchor.constraint(equalToConstant: starSize.height).isActive = true
             button.widthAnchor.constraint(equalToConstant: starSize.width).isActive = true
             
+            
             // Setup the button action
             button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
             
             // Add the buttton to the stack
-            addArrangedSubview(button)
             
+            addArrangedSubview(button)
+            // Za razmak izmedju zvezdica
+            self.spacing = 3
             // Add the new button to the rating button array
             ratingButtons.append(button)
         }
