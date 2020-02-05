@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Alamofire
 
 class RatingsTableViewController: UITableViewController {
 
     // MARK: Properties
     
     var serviceProvider : ServiceProvider?
+    var ratings = [RatingFromServer]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,20 @@ class RatingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadRatings()
+    }
+    
+    // MARK: - Communication with server
+    
+    func loadRatings() {
+        let nnc = NewNetworkingClient()
+        nnc.genericFetch(urlString: Utils.RATINGS + "/" + (serviceProvider?.provider.id ?? "")) { (ratings: [RatingFromServer]) in
+            for rating in ratings {
+                print(rating)
+                self.ratings.append(rating)
+            }
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -31,7 +47,7 @@ class RatingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return serviceProvider?.provider.ratings.count ?? 0
+        return ratings.count
     }
 
     
@@ -42,22 +58,31 @@ class RatingsTableViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of HiredServiceTableViewCell")
         }
         
-        let rating = serviceProvider?.provider.ratings[indexPath.row]
+        let rating = ratings[indexPath.row]
 
-        cell.userLeftTheCommentLabel.text = "pera"
-        cell.ratingUserLeftLabel.text = String(describing: rating?.rating ?? 0)
+        cell.userLeftTheCommentLabel.text = rating._client
+        cell.ratingUserLeftLabel.text = String(describing: rating.rating)
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        cell.dateCommentLeftLabel.text = dateFormatter.string(from: rating?.dateRated ?? Date())
-        cell.commentTextView.text = rating?.comment
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.timeStyle = .none
+//        cell.dateCommentLeftLabel.text = dateFormatter.string(from: rating.dateRated ?? Date())
+        cell.commentTextView.text = rating.comment
         cell.serviceProvidedLabel.text = serviceProvider?.service.title
         
+//        let dateFormatter = ISO8601DateFormatter()
+//        let date = dateFormatter.date(from:rating.createdAt)
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = formatter.date(from:rating.createdAt)
         
-        // Configure the cell...
-
+//        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        // again convert your date to string
+        let myDate = formatter.string(from: date!)
+        cell.dateCommentLeftLabel.text = myDate
+        
         return cell
     }
     

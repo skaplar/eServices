@@ -51,6 +51,7 @@ class ServiceTableViewController: UITableViewController {
                     )
                     
                     let provider = Provider(name: tmpProv._provider.name, city: tmpProv._provider._city, photo: slika)
+                    provider?.id = tmpProv._provider._id
                     
                     let sp = ServiceProvider(service: s2!, provider: provider!)
                     sp?.rating = tmpProv.rating
@@ -103,6 +104,7 @@ class ServiceTableViewController: UITableViewController {
         cell.serviceNameLabel.text = serviceProvider.provider.name
         cell.photoImageView.image = serviceProvider.provider.photo
         cell.ratingControl.rating = Int(round(serviceProvider.rating))
+        
         
         return cell
     }

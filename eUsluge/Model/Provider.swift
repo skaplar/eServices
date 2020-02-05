@@ -11,6 +11,7 @@ import UIKit
 
 public class Provider {
     
+    var id: String?
     var name: String
     var city: City
     var services: [Service]

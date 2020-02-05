@@ -20,6 +20,7 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var providerLabelView: UILabel!
     @IBOutlet weak var serviceLabelView: UILabel!
     @IBOutlet weak var cityLabelView: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     /*
      This value is either passed by `ServiceTableViewController` in `prepare(for:sender:)`
@@ -36,6 +37,7 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
             priceLabelView.text = String(describing: serviceProvider.price)
             serviceLabelView.text = serviceProvider.service.title
             cityLabelView.text = serviceProvider.service.city?.name
+            descriptionTextView.text = serviceProvider.description
         }
     }
 
@@ -79,13 +81,14 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
         picker.timeInterval = DateTimePicker.MinuteInterval.thirty
         picker.completionHandler = { date in
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
             self.title = formatter.string(from: date)
             
             // FINISH THIS
             let newH: [String: Any] =
                 ["_serviceprovider" : self.serviceProvider!.id,
-                 "slot" : formatter.string(from: date) ]
+                 "slot" : formatter.string(from: date),
+                 "_client" : Utils.CLIENT_ID]
             
             Alamofire.AF.request(Utils.ARRANGEDSERVICE, method: .post, parameters: newH,
                               encoding: JSONEncoding.default)

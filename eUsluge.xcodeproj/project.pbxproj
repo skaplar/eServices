@@ -18,6 +18,7 @@
 		CE583DC120AACC680040E717 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE583DBF20AACC680040E717 /* Main.storyboard */; };
 		CE583DC320AACC690040E717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE583DC220AACC690040E717 /* Assets.xcassets */; };
 		CE583DC620AACC690040E717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE583DC420AACC690040E717 /* LaunchScreen.storyboard */; };
+		CE63E44A23E313960020013E /* RatingFromServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63E44923E313960020013E /* RatingFromServer.swift */; };
 		CE974F6320BAF6EA0042446A /* ServiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6220BAF6EA0042446A /* ServiceTableViewController.swift */; };
 		CE974F6520BAFA740042446A /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6420BAFA740042446A /* RatingControl.swift */; };
 		CE974F6720BB18F30042446A /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */; };
@@ -58,6 +59,7 @@
 		CE583DC220AACC690040E717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE583DC520AACC690040E717 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE583DC720AACC690040E717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE63E44923E313960020013E /* RatingFromServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingFromServer.swift; sourceTree = "<group>"; };
 		CE974F6220BAF6EA0042446A /* ServiceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewController.swift; sourceTree = "<group>"; };
 		CE974F6420BAFA740042446A /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		CE974F6620BB18F30042446A /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				CEE1CDC622C0DE3A004E9063 /* ProviderFromServer.swift */,
 				CEF34AA721F1D22200305B38 /* ServiceFromServer.swift */,
 				CE11A51123D4E37800DA2E5E /* ArrangedServiceFromServer.swift */,
+				CE63E44923E313960020013E /* RatingFromServer.swift */,
 			);
 			path = ModelFromServer;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				CEDDEC1121C3D55C000EA69A /* HiredServiceTableViewController.swift in Sources */,
 				CEF34A9721E6077800305B38 /* LeaveRatingViewController.swift in Sources */,
 				CE974F6320BAF6EA0042446A /* ServiceTableViewController.swift in Sources */,
+				CE63E44A23E313960020013E /* RatingFromServer.swift in Sources */,
 				CE2517522139635A00E424E0 /* City.swift in Sources */,
 				CEE1CDC522C0CAD1004E9063 /* ServiceForCityFromServer.swift in Sources */,
 				CE974F6720BB18F30042446A /* ServiceTableViewCell.swift in Sources */,

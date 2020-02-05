@@ -17,9 +17,6 @@ class HiredServiceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,7 +31,7 @@ class HiredServiceTableViewController: UITableViewController {
     func loadArrServices() {
         let nnc = NewNetworkingClient()
         self.hiredServices.removeAll()
-        nnc.genericFetch(urlString: (Utils.ARRANGEDSERVICE + "/123")) { (arrangedServices: [ArrangedServiceFromServer]) in
+        nnc.genericFetch(urlString: (Utils.ARRANGEDSERVICE + "/" + Utils.CLIENT_ID)) { (arrangedServices: [ArrangedServiceFromServer]) in
                for arrService in arrangedServices {
                 self.hiredServices.append(arrService)
                 self.tableView.reloadData()
