@@ -34,6 +34,7 @@ class ServiceTableViewController: UITableViewController {
         
         let nnc = NewNetworkingClient()
         let sers = Utils.SERVICEFORCITY + "/" + choosenCity!._id + "/" + choosenService!._id
+        print(sers)
         nnc.genericFetch(urlString: sers) { (serviceproviders2: [ServiceProviderFromServer]) in
             for tmpProv in serviceproviders2 {
                 Alamofire.AF.request(Utils.PHOTOS + "/" + (tmpProv._serviceforcity._service.img)).responseData { response in

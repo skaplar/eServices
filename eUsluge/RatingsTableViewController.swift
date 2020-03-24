@@ -61,7 +61,7 @@ class RatingsTableViewController: UITableViewController {
         let rating = ratings[indexPath.row]
 
         cell.userLeftTheCommentLabel.text = rating._client
-        cell.ratingUserLeftLabel.text = String(describing: rating.rating)
+        cell.ratingUserLeftLabel.text = String(describing: rating.rating!)
         
 //        let dateFormatter = DateFormatter()
 //        dateFormatter.dateStyle = .medium
@@ -75,7 +75,7 @@ class RatingsTableViewController: UITableViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = formatter.date(from:rating.createdAt)
+        let date = formatter.date(from:rating.createdAt!)
         
 //        let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"

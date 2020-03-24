@@ -24,7 +24,7 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     var filterableCities = [SearchTextFieldItem]()
     var city: City?
     var service: Service?
-    var cities =  [City]()
+    var cities = [City]()
     
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     }
     
     
-    // Here the cities are loaded, currently hardcoded
+    // Here the cities are loaded
     // And added to the filterable collection
     func loadCities() {
         let nnc = NewNetworkingClient()
@@ -69,7 +69,6 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     func loadServices() {
         let nnc = NewNetworkingClient()
         nnc.genericFetch(urlString: Utils.SERVICES) { (tmpServices: [ServiceFromServer]) in
-            print(tmpServices)
             for tmpService in tmpServices {
                 let city = self.getCity(cityId: tmpService._city)
                 Alamofire.AF.request(Utils.PHOTOS + "/" + tmpService.img).responseData { response in
