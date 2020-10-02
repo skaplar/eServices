@@ -16,6 +16,8 @@ class HiredServiceTableViewCell: UITableViewCell {
     @IBOutlet weak var serviceProviderNameLabel: UILabel!
     @IBOutlet weak var serviceCityLabel: UILabel!
     @IBOutlet weak var serviceFinishedLabel: UILabel!
+    @IBOutlet weak var serviceDateLabel: UILabel!
+    @IBOutlet weak var serviceNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

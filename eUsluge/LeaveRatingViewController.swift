@@ -22,9 +22,7 @@ class LeaveRatingViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         commentTextView!.layer.borderWidth = 1
-        commentTextView!.layer.borderColor = UIColor.red.cgColor
-        
-        print(arrangedService?._id)
+//        commentTextView!.layer.borderColor = UIColor.red.cgColor
     }
     
     // MARK: - Navigation
@@ -39,6 +37,7 @@ class LeaveRatingViewController: UIViewController {
             case "unwindToChooseService":
                 print("Pozove se unwind iako nema funkciju")
                 //TODO:  Ovde dodaj provere da li je unesen komentar i da li je ostavljena ocena.
+                
                 
                 print(commentTextView.text.description)
                 print(serviceRatingControl.rating)

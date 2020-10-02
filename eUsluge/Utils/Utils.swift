@@ -17,7 +17,8 @@ class Utils {
     public static let SERVICEPROVIDERS = API + "serviceproviders"
     public static let SERVICEFORCITY = API + "serviceforcity"
     public static let ARRANGEDSERVICE = API + "arrangedservices"
-    public static let CLIENT_ID = "5e30aeea7c0b8e32a115ed33"
+    public static let RESCHEDULEDSERVICE_FORARRANGED = API + "rescheduledservices/forarrangedservice"
+    public static var CLIENT_ID = "5e30aeea7c0b8e32a115ed33"
     public static let RATINGS = API + "ratings"
     
     func stariPrimeri() {

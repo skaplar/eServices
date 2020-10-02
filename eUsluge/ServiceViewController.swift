@@ -163,7 +163,6 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
-        
     }
     
     func finishService() {

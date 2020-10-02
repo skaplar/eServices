@@ -11,8 +11,8 @@ import os.log
 import Alamofire
 
 class ServiceTableViewController: UITableViewController {
-    // MARK Properties
     
+    // MARK Properties
     var services = [Service]()
     var serviceProviders = [ServiceProvider]()
     
@@ -20,10 +20,10 @@ class ServiceTableViewController: UITableViewController {
     var choosenCity: City?
     var choosenService: Service?
     
-    
     // MARK : Private methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = choosenService?.title
         
 //        let possibleServiceProviders = DemoData.serviceProviders
 //        for tmpPossibleServiceProvider in possibleServiceProviders {
@@ -37,7 +37,9 @@ class ServiceTableViewController: UITableViewController {
         print(sers)
         nnc.genericFetch(urlString: sers) { (serviceproviders2: [ServiceProviderFromServer]) in
             for tmpProv in serviceproviders2 {
-                Alamofire.AF.request(Utils.PHOTOS + "/" + (tmpProv._serviceforcity._service.img)).responseData { response in
+                let imgToFetch = tmpProv.img != nil ? tmpProv.img : tmpProv._serviceforcity._service.img
+                
+                Alamofire.AF.request(Utils.PHOTOS + "/" + (imgToFetch!)).responseData { response in
                     var slika: UIImage?
                     if let data = response.data {
                         slika = UIImage(data: data, scale:1)
@@ -105,6 +107,15 @@ class ServiceTableViewController: UITableViewController {
         cell.serviceNameLabel.text = serviceProvider.provider.name
         cell.photoImageView.image = serviceProvider.provider.photo
         cell.ratingControl.rating = Int(round(serviceProvider.rating))
+        cell.priceLabel.text = String(serviceProvider.price)
+        
+        
+
+        cell.photoImageView.layer.borderWidth = 1
+        cell.photoImageView.layer.masksToBounds = false
+        cell.photoImageView.layer.borderColor = UIColor.black.cgColor
+        cell.photoImageView.layer.cornerRadius = cell.photoImageView.frame.height / 2
+        cell.photoImageView.clipsToBounds = true
         
         
         return cell

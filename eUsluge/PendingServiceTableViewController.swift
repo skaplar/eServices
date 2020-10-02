@@ -9,13 +9,16 @@
 import UIKit
 import Alamofire
 
-class HiredServiceTableViewController: UITableViewController {
+class PendingServiceTableViewController: UITableViewController {
     
     
 
     // MARK: Properties
 //    var hiredServices = [HiredService]()
     var hiredServices = [ArrangedServiceFromServer]()
+    var rescheduledServices = [RescheduledServiceFromServer]()
+    var mapping: [String: [RescheduledServiceFromServer]] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
@@ -32,12 +35,28 @@ class HiredServiceTableViewController: UITableViewController {
         self.hiredServices.removeAll()
         nnc.genericFetch(urlString: (Utils.ARRANGEDSERVICE + "/" + Utils.CLIENT_ID)) { (arrangedServices: [ArrangedServiceFromServer]) in
                 for arrService in arrangedServices {
-                    if arrService.status != .pending {
+                    if arrService.status == .pending {
                         self.hiredServices.append(arrService)
-                        self.tableView.reloadData()
+//                        self.tableView.reloadData()
                     }
                 }
-               
+            self.loadRescheduledMessages()
+        }
+    }
+    
+    func loadRescheduledMessages() {
+        let nnc = NewNetworkingClient()
+//        self.rescheduledServices.removeAll()
+        self.mapping.removeAll()
+        for hiredService in hiredServices {
+            self.mapping[hiredService._id] = [RescheduledServiceFromServer]()
+            print(Utils.RESCHEDULEDSERVICE_FORARRANGED + "/" + hiredService._id)
+            nnc.genericFetch(urlString: (Utils.RESCHEDULEDSERVICE_FORARRANGED + "/" + hiredService._id)) { (rescheduledServices: [RescheduledServiceFromServer]) in
+                    for rescheduledService in rescheduledServices {
+                        self.mapping[hiredService._id]?.append(rescheduledService)
+                    }
+                    self.tableView.reloadData()
+            }
         }
     }
     
@@ -53,6 +72,7 @@ class HiredServiceTableViewController: UITableViewController {
         // nemamo referencu na tableView pa zbog toga ne mozemo da dodamo samo jedan red
         loadArrServices()
 //        tableView.reloadData()
+        print(hiredServices.count)
     }
     
     
@@ -87,12 +107,21 @@ class HiredServiceTableViewController: UITableViewController {
         cell.serviceProviderNameLabel.text = hiredService._serviceprovider._provider.name
         cell.serviceCityLabel.text = hiredService._serviceprovider._provider._city.name
         cell.serviceFinishedLabel.text = hiredService.status.rawValue
+        print(hiredService.slot)
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let datez = formatter.date(from:hiredService.slot)!
+
+        formatter.dateFormat = "dd.MM.yyyy HH:mm"
+        // again convert your date to string
+        let myDate = formatter.string(from: datez)
+
+        cell.serviceDateLabel.text = myDate.description
+        cell.serviceNameLabel.text = hiredService._serviceprovider._serviceforcity._service.title
         
-        
-        if hiredService.status == .completed && hiredService._rating == nil {
+        if hiredService.status == .pending && self.mapping[hiredService._id]?.count ?? 0 > 0 {
             cell.accessoryType = .disclosureIndicator
-            cell.serviceFinishedLabel.text = "rate"
         } else {
             cell.accessoryType = .none
         }
@@ -139,8 +168,8 @@ class HiredServiceTableViewController: UITableViewController {
     // Ovo je kad kliknem na celiju, dobijem indeks, proverim uslov ukoliko je ok prelazim na rating
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let hiredService = hiredServices[indexPath.row]
-        if hiredService.status == .completed && hiredService._rating == nil {
-            self.performSegue(withIdentifier: "LeaveRatingSegue", sender: hiredService)
+         if hiredService.status == .pending && self.mapping[hiredService._id]?.count ?? 0 > 0 {
+            self.performSegue(withIdentifier: "RescheduledServicesSegue", sender: self.mapping[hiredService._id])
         }
         
         // deselektuj celiju
@@ -152,7 +181,6 @@ class HiredServiceTableViewController: UITableViewController {
     // da li ovo radi nadam se da da
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         return false
-        
     }
 
     
@@ -165,12 +193,12 @@ class HiredServiceTableViewController: UITableViewController {
         // sender is hiredService, passed from tableView didSelectRowAt
         super.prepare(for: segue, sender: sender)
         switch(segue.identifier ?? "") {
-            case "LeaveRatingSegue":
-                guard let leaveRatingViewController = segue.destination as? LeaveRatingViewController else {
+            case "RescheduledServicesSegue":
+                guard let leaveRatingViewController = segue.destination as? RescheduledServicesTableViewController else {
                     fatalError("Unexpected destination: \(segue.destination)")
                 }
 
-                leaveRatingViewController.arrangedService = sender as? ArrangedServiceFromServer
+                leaveRatingViewController.rescheduledServices = (sender as? [RescheduledServiceFromServer])!
             default:
                 fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }

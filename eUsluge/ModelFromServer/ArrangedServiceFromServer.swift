@@ -12,9 +12,10 @@ import Foundation
 class ArrangedServiceFromServer : Codable {
     
     enum Status: String, Codable {
-           case pending
-           case accepted
-           case completed
+        case pending
+        case accepted
+        case completed
+        case rejected
     }
 
     // MARK: Properties

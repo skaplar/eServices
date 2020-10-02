@@ -14,6 +14,8 @@ class ServiceTableViewCell: UITableViewCell {
     @IBOutlet weak var serviceNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     
     
     override func awakeFromNib() {

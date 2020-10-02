@@ -18,6 +18,7 @@ class ServiceProviderFromServer : Codable {
     var rating: Float = 0.0
     var price: Float = 0.0
     var description: String?
+    var img: String?
     
     private enum CodingKeys: String, CodingKey {
         case _id
@@ -26,9 +27,10 @@ class ServiceProviderFromServer : Codable {
         case rating
         case price
         case description
+        case img
     }
     
-    init?(_id: String, _serviceforcity: ServiceForCityFromServer, _provider: ProviderFromServer, rating: Float, price: Float, description: String) {
+    init?(_id: String, _serviceforcity: ServiceForCityFromServer, _provider: ProviderFromServer, rating: Float, price: Float, description: String, img: String) {
         
         // Initialization should fail if there is no name or if the rating is negative.
         if _id.isEmpty  {
@@ -42,6 +44,7 @@ class ServiceProviderFromServer : Codable {
         self.rating = rating
         self.description = description
         self.price = price
+        self.img = img
     }
     
     

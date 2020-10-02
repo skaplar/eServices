@@ -18,7 +18,6 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBOutlet weak var chooseServicePickerView: UIPickerView!
     @IBOutlet weak var searchTextField: SearchTextField!
     
-    // let services = ["Cleaning", "Washing", "Dashing"]
     //let services = DemoData.services
     var services = [Service]()
     var filterableCities = [SearchTextFieldItem]()
@@ -29,7 +28,6 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         searchTextField.delegate = self
         //searchTextField.filterStrings(["Novi Sad", "Beograd"])
         loadCities()
@@ -143,6 +141,12 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
         target?.choosenCity = city
         target?.choosenService = service
     }
+    
+    // ovo je da stopiram segue, odnosno ako je textfield prazan da ne ide dalje
+    // izvrsavam ga rucno u metodi enter
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
+    }
  
     
     
@@ -169,19 +173,18 @@ class ChooseServiceViewController: UIViewController, UIPickerViewDataSource, UIP
         }
     }
     
-    
-    
     // MARK: Actions
     @IBAction func enter(_ sender: UIButton) {
         if searchTextField.text != "" {
             searchTextField.resignFirstResponder()
             performSegue(withIdentifier: "showServicesTableSegue", sender: self)
+        } else {
+            searchTextField.becomeFirstResponder()
         }
     }
     
     @IBAction func unwindToChooseService(sender: UIStoryboardSegue) {
         // Ovo ovde mi je kad se pritisne dugme HIRE da se vrati na ovaj ekran
         // Iako nista ne radi na njega se vracam
-        
     }
 }
