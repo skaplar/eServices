@@ -72,25 +72,47 @@ class RescheduledServicesTableViewController: UITableViewController {
         // again convert your date to string
         let myDate = formatter.string(from: datez)
         
+        
         cell.serviceCityLabel.text = ""
 //        cell.serviceFinishedLabel.text = "Accepted: " + String(hiredService.accepted)
         cell.serviceFinishedLabel.text = myDate
         cell.layer.cornerRadius = 10
-        cell.layer.masksToBounds = true
+//        cell.layer.masksToBounds = true
         
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 1
+                
+        let verticalPadding: CGFloat = 5
+
+          let maskLayer = CALayer()
+          maskLayer.cornerRadius = 10    //if you want round edges
+        
+        //Bez ovoga maska ne radi uopste
+          maskLayer.backgroundColor = UIColor.black.cgColor
+//          maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+
+        // Ovo pomera tekst u celiji
+        cell.layoutMargins.left = 25
         
         if hiredService.sender.id == currentUserId {
             cell.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.3)
+            // Ovo malo odvojim od ivica i poguram celiju levo/desno
+            maskLayer.frame = CGRect(x: 5, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 5, dy: verticalPadding)
+            
+            // Gurnem tekst desno
+            cell.serviceProviderNameLabel.textAlignment = NSTextAlignment.right
+            
+            // Posto imam labelu dole, ne mogu da je gurnem levo, nego je ispraznim
+            cell.serviceFinishedLabel.text = ""
+            
+            // a tu drugu labelu podesim na novo
+            cell.serviceCityLabel.text = myDate
+            cell.serviceCityLabel.textAlignment = NSTextAlignment.left
         } else {
             cell.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.5)
+            maskLayer.frame = CGRect(x: -5, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 5, dy: verticalPadding)
         }
-        
-        
-        
-        
-        
+        cell.layer.mask = maskLayer
         return cell
     }
     
@@ -177,7 +199,6 @@ class RescheduledServicesTableViewController: UITableViewController {
         }
         let tmpService = rescheduledServices[0]
         
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
@@ -187,7 +208,7 @@ class RescheduledServicesTableViewController: UITableViewController {
             "date" : formatter.string(from: Date()),
              "accepted" : false,
              "message" : message,
-             "_client" : tmpService.client,
+             "_client" : tmpService.client.id,
              "_provider" : tmpService.provider,
              "_sender" : Utils.CLIENT_ID]
         
@@ -223,6 +244,7 @@ class RescheduledServicesTableViewController: UITableViewController {
             //getting the input values from user
             let name = alertController.textFields?[0].text
             self.sendData(message: name!)
+            self.navigationController?.popViewController(animated: true)
        }
        
         //the cancel action doing nothing

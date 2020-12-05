@@ -17,7 +17,6 @@ class ServiceTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

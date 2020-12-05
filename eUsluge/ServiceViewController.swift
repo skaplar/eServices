@@ -27,9 +27,13 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
      */
     var serviceProvider: ServiceProvider?
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let serviceProvider = serviceProvider {
             providerLabelView.text = serviceProvider.provider.name
             photoImageView.image = serviceProvider.provider.photo
@@ -46,21 +50,10 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Dispose of any resources that can be recreated.
     }
 
-
     // MARK: Actions
     // Ovo ako bude trebalo da se odabere slika
     
     @IBAction func hireAction(_ sender: Any) {
-       /* let alert = UIAlertController(title: "Are you sure?", message: "Please confirm your selection", preferredStyle: UIAlertController.Style.alert)
-        
-        
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: {action in
-            self.finishService() }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)*/
-        
         let min = Date().addingTimeInterval(-60 * 60 * 24 * 4)
         let max = Date().addingTimeInterval(60 * 60 * 24 * 4)
         let picker = DateTimePicker.create(minimumDate: min, maximumDate: max)
@@ -80,21 +73,28 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
         picker.doneBackgroundColor = UIColor(red: 255.0/255.0, green: 138.0/255.0, blue: 138.0/255.0, alpha: 1)
         picker.timeInterval = DateTimePicker.MinuteInterval.thirty
         picker.completionHandler = { date in
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-            self.title = formatter.string(from: date)
             
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//            self.title = formatter.string(from: date)
+            
+            let formatter2 = ISO8601DateFormatter()
+            formatter2.timeZone = TimeZone(identifier: "UTC")
+            print(formatter2.string(from: date))
+            
+            
+            print("DADADA" + formatter2.string(from: date))
             // FINISH THIS
-            let newH: [String: Any] =
-                ["_serviceprovider" : self.serviceProvider!.id,
-                 "slot" : formatter.string(from: date),
-                 "_client" : Utils.CLIENT_ID]
+            let newH: [String: Any] = [
+                "_serviceprovider" : self.serviceProvider!.id,
+                "slot" : formatter2.string(from: date),
+                "_client" : Utils.CLIENT_ID
+            ]
             
             Alamofire.AF.request(Utils.ARRANGEDSERVICE, method: .post, parameters: newH,
                               encoding: JSONEncoding.default)
                 .responseJSON { response in
                     guard response.error == nil else {
-                        // got an error in getting the data, need to handle it
                         print("error")
                         print(response.error!)
                         return
@@ -103,11 +103,11 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
                     // unwrap JSON
                     guard let json = response.value as? [String: Any] else {
                         print("No JSON")
-                        // Could not get JSON
                         return
                     }
                     
                     print(json)
+                    picker.removeFromSuperview()
                     // use json
 //                    guard let postTitle = json["title"] as? String else {
 //                        // Could not get title from json
@@ -126,9 +126,9 @@ class ServiceViewController: UIViewController, UIImagePickerControllerDelegate, 
         // you'll end up with corrupted looking UI
         //        picker.frame = CGRect(x: 0, y: 100, width: picker.frame.size.width, height: picker.frame.size.height)
         // set a dismissHandler if necessary
-        //        picker.dismissHandler = {
-        //            picker.removeFromSuperview()
-        //        }
+//                picker.dismissHandler = {
+//                    picker.removeFromSuperview()
+//                }
         //        self.view.addSubview(picker)
         
         // or show it like a modal

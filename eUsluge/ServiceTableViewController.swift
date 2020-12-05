@@ -24,6 +24,8 @@ class ServiceTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = choosenService?.title
+//        tableView.rowHeight = UITableView.
+//        tableView.estimatedRowHeight = 60
         
 //        let possibleServiceProviders = DemoData.serviceProviders
 //        for tmpPossibleServiceProvider in possibleServiceProviders {
@@ -43,6 +45,7 @@ class ServiceTableViewController: UITableViewController {
                     var slika: UIImage?
                     if let data = response.data {
                         slika = UIImage(data: data, scale:1)
+                        
                     }
                     
                     let s2 = Service(
@@ -111,10 +114,13 @@ class ServiceTableViewController: UITableViewController {
         
         
 
-        cell.photoImageView.layer.borderWidth = 1
-        cell.photoImageView.layer.masksToBounds = false
-        cell.photoImageView.layer.borderColor = UIColor.black.cgColor
-        cell.photoImageView.layer.cornerRadius = cell.photoImageView.frame.height / 2
+//        cell.photoImageView.layer.borderWidth = 1
+        cell.photoImageView.layer.masksToBounds = true
+//        cell.photoImageView.draw(CGRect(x: 0, y: 0, width: 100, height: 100))
+//        cell.photoImageView.layer.borderColor = UIColor.black.cgColor
+//        cell.photoImageView.layer.cornerRadius = cell.photoImageView.frame.height / 2
+        cell.photoImageView.layer.cornerRadius = 5
+//        cell.photoImageView.layer.cornerRadius = (cell.photoImageView?.frame.size.width ?? 0.0) / 2
         cell.photoImageView.clipsToBounds = true
         
         

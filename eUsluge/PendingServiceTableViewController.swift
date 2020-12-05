@@ -33,6 +33,7 @@ class PendingServiceTableViewController: UITableViewController {
     func loadArrServices() {
         let nnc = NewNetworkingClient()
         self.hiredServices.removeAll()
+        print(Utils.ARRANGEDSERVICE + "/" + Utils.CLIENT_ID)
         nnc.genericFetch(urlString: (Utils.ARRANGEDSERVICE + "/" + Utils.CLIENT_ID)) { (arrangedServices: [ArrangedServiceFromServer]) in
                 for arrService in arrangedServices {
                     if arrService.status == .pending {
